@@ -28,7 +28,7 @@ def get_gender(twitter_message, classifier):
   X_new_counts = count_vect.transform(twitter_message)
   X_new_tfidf = tfidf_transformer.transform(X_new_counts)
 
-  return classifier.predict(X_new_tfidf)
+  return classifier.predict(X_new_tfidf)[0]
 
 
 def main():
@@ -40,7 +40,7 @@ def main():
 
     if twitter_message[0]:
       gender = get_gender(twitter_message, classifier)
-      print('gender: ', gender[0])
+      print('gender: ', gender)
 
 
 if __name__ == '__main__':
